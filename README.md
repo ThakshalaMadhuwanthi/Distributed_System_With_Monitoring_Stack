@@ -42,10 +42,16 @@ Prometheus collects metrics from containers
 cAdvisor provides real-time container performance data
 
 Grafana visualizes system metrics through dashboards
+
 🧱 Technologies Used
 Docker & Docker Compose
+
 NGINX (Load Balancer)
+
 Prometheus
+
 Grafana
+
 cAdvisor
+
 Linux (Ubuntu / EC2)
