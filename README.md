@@ -2,42 +2,45 @@
 📦 Distributed System with Monitoring Stack
 📌 Overview
 
-This project demonstrates a containerized distributed system using Docker, NGINX, and a full monitoring stack (Prometheus, Grafana, cAdvisor). It is designed to illustrate key concepts in distributed systems such as:
+This project is a containerized distributed system built using Docker and NGINX, demonstrating key concepts of distributed systems along with a full monitoring stack for observability.
 
-Access Transparency
-Location Transparency
-Replication Transparency
-Concurrency Transparency
-System Monitoring & Observability
+The system simulates multiple backend web servers behind a load balancer and integrates real-time monitoring using Prometheus, Grafana, and cAdvisor.
 
-The system simulates multiple web servers behind a load balancer and provides real-time performance monitoring.
+🏗️ System Architecture
 
-🏗️ Architecture
+The architecture consists of:
 
-The system consists of:
-
-Load Balancer (NGINX)
-Web Servers (web1, web2, web3)
+NGINX Load Balancer
+Multiple Web Server Containers (web1, web2, web3)
 Monitoring Stack
 Prometheus (metrics collection)
 Grafana (visualization)
-cAdvisor (container monitoring)
-Flow:
-Client → NGINX Load Balancer → Web Servers (replicas)
-                           ↓
-                 Prometheus + cAdvisor → Grafana Dashboard
-🚀 Features
-✔ Distributed System Concepts
-Access Transparency (single entry point)
-Location Transparency (hidden backend servers)
-Replication Transparency (multiple replicas of web service)
-Concurrency Transparency (multiple simultaneous users)
-✔ Monitoring Stack
-Real-time container monitoring
-CPU & memory usage tracking
-Grafana dashboards for visualization
-Prometheus metrics scraping
-🐳 Tech Stack
+cAdvisor (container-level monitoring)
+🔑 Key Distributed System Concepts Implemented
+✔ Access Transparency
+
+Users interact with a single endpoint through a load balancer without knowing backend server details.
+
+✔ Location Transparency
+
+Backend server locations and container details are hidden from users.
+
+✔ Replication Transparency
+
+Multiple identical web server containers operate as a single logical service.
+
+✔ Concurrency Transparency
+
+Multiple users can access the system simultaneously without interference.
+
+📊 Monitoring Stack
+
+The system includes a full observability layer:
+
+Prometheus collects metrics from containers
+cAdvisor provides real-time container performance data
+Grafana visualizes system metrics through dashboards
+🧱 Technologies Used
 Docker & Docker Compose
 NGINX (Load Balancer)
 Prometheus
