@@ -11,12 +11,19 @@ The system simulates multiple backend web servers behind a load balancer and int
 The architecture consists of:
 
 NGINX Load Balancer
+
 Multiple Web Server Containers (web1, web2, web3)
+
 Monitoring Stack
+
 Prometheus (metrics collection)
+
 Grafana (visualization)
+
 cAdvisor (container-level monitoring)
+
 🔑 Key Distributed System Concepts Implemented
+
 ✔ Access Transparency
 
 Users interact with a single endpoint through a load balancer without knowing backend server details.
