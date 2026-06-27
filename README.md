@@ -38,7 +38,9 @@ Multiple users can access the system simultaneously without interference.
 The system includes a full observability layer:
 
 Prometheus collects metrics from containers
+
 cAdvisor provides real-time container performance data
+
 Grafana visualizes system metrics through dashboards
 🧱 Technologies Used
 Docker & Docker Compose
