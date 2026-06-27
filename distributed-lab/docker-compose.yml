@@ -1,21 +1,62 @@
+version: "3.8"
+
 services:
+
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:v0.49.1
+    container_name: cadvisor
+    privileged: true
+    ports:
+      - "8081:8080"
+    networks:
+      - distributed-net
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    networks:
+      - distributed-net
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    networks:
+      - distributed-net
+
   web1:
     image: nginx
     container_name: web1
     volumes:
       - ./web1/index.html:/usr/share/nginx/html/index.html
+    networks:
+      - distributed-net
 
   web2:
     image: nginx
     container_name: web2
     volumes:
       - ./web2/index.html:/usr/share/nginx/html/index.html
+    networks:
+      - distributed-net
 
   web3:
     image: nginx
     container_name: web3
     volumes:
       - ./web3/index.html:/usr/share/nginx/html/index.html
+    networks:
+      - distributed-net
 
   loadbalancer:
     image: nginx
@@ -28,3 +69,9 @@ services:
       - web1
       - web2
       - web3
+    networks:
+      - distributed-net
+
+networks:
+  distributed-net:
+    driver: bridge
